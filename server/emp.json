@@ -1,0 +1,36 @@
+{
+    "emp1" : {
+       "name" : "Julian Martinez",
+       "age" : "35",
+       "dept" : "Engineering",
+       "address": {
+            "street": "747 Natoma Street",
+            "city": "San Francisco",
+            "state": "California",
+            "zip": "94103"
+            }
+    },
+    "emp2" : {
+        "name" : "Raul Orepaza",
+        "age" : "28",
+        "dept" : "sales",
+        "address": {
+            "street": "4800 Post Street",
+            "city": "San Francisco",
+            "state": "California",
+            "zip": "94345"
+          }
+    },
+    "emp3" : {
+        "name" : "John Nelson",
+        "age" : "44",
+        "dept" : "Management",
+        "address": {
+            "street": "74 Powell Street",
+            "city": "San Francisco",
+            "state": "California",
+            "zip": "94107"
+          }
+    }
+ }
+ 

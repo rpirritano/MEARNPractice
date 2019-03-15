@@ -1,0 +1,27 @@
+{
+  "name": "nodeex1",
+  "version": "1.0.0",
+  "description": "first new mean ex",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "na"
+  },
+  "repository": {
+    "type": "git",
+    "url": "na"
+  },
+  "keywords": [
+    "na"
+  ],
+  "author": "Robert Pirritano",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.17",
+    "multer": "^1.4.1",
+    "pug": "^2.0.3"
+  }
+}

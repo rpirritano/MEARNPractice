@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Robert's Node API</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script> 
+  <style>
+    table {
+      width:100%;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+    <h4>REST API in html!!!</h4>
+
+    <h4>         
+      Please Type Name and Password     
+    </h4>         
+    <div>         
+      <div>             
+        <input type="text" value="User Name" id="user"/>         
+      </div>         
+      <div>             
+        <input type="text" value="Password" id="password"/>         
+      </div>         
+      <div>             
+        <input type="button" id="submit" value="Submit">         
+      </div>         
+    </div>
+    <h4>Update Data</h4>
+    <div>
+        <div>
+            <input type="text" value="User Name" id="userupdate"/>
+        </div>
+        <div>
+            <input type="text" value="Password" id="passwordupdate"/>
+        </div>
+        <div>
+            <input type="button" id="update" value="Update">
+        </div>    
+    </div>
+    <h4>Delete User</h4>
+    <div>
+        <input type="button" id="delete" value="DeleteUser">
+    </div>
+    <div>
+   
+    
+
+    <script> 
+    $(document).ready(function(){         
+      var user,
+      pass;         
+      
+      $("#submit").click(function(){           
+        user=$("#user").val();           
+        pass=$("#password").val();                     
+         $.ajax(
+           {               
+             url:"http://localhost:3000/api/createstudent",               
+             type:"post",                         
+             contentType:"application/json",               
+             data :JSON.stringify(
+               {                        
+                 userName: user,                     
+                 password: pass,                     
+                 schoolName: "MIT"                 
+                 }),                          
+                 
+                 success:function(data){                     
+                   if(data =='done'){                         
+                     alert("login success");                     
+                     }                 
+                    },                 
+                    error:function(data){                     
+                      if(data =='done'){                         
+                        alert("login success");                     
+                      }                 
+                    }         
+                  });     
+                  }) 
+        })
+        
+      $("#update").click(function(){
+         user=$("#userupdate").val();
+         pass=$("#passwordupdate").val();
+          
+         $.post("http://localhost:3000/api/updatestudent",
+         {   
+            userName: user,
+            password: pass,
+            _id:idtoUpdate         
+        },         
+        function(data){  alert("update success");              
+        });
+      });
+
+      $("#delete").click(function(){         
+        
+        $.post("http://localhost:3000/api/deletestudent",
+        {   
+            _id:idtoUpdate         
+        },         
+        function(data){  alert("delete success");              
+        });
+      });
+
+      var idtoUpdate = "";
+      (function bindData() {
+        $.get("http://localhost:3000/api/getstudents",                        
+        function(data){                     
+            idtoUpdate = data[data.length-1]._id; 
+            $("#userupdate").val(data[data.length-1].Name);
+            $("#passwordupdate").val(data[data.length-1].Password);                
+        });
+    })();//IIFE   
+   
+      </script> 
+</body>
+</html>
