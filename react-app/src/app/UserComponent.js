@@ -10,8 +10,13 @@ export default class User extends React.Component{
             Age: " ",
             Country : "United States",
             Techonology : "Object Oriented Javascript"
-        }       
+        }   
+        console.log("Constructor Initialized");     
     }  
+
+    componentWillMount(){
+        console.log("Creation - We are in - componentWillMount");
+    }
         
     updateAge = (e) => {        
         //console.log(event);
@@ -30,6 +35,46 @@ export default class User extends React.Component{
             Name: event.target.value           
         })
     }
+
+    componentWillReceiveProps(nextProps){
+        console.log("UpdateLC - We are in - componentWillReceiveProps nextProps :", nextProps);        
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.log("UpdateLC - We are in - shouldComponentUpdate");        
+        console.log("Age :", nextState.Age);        
+        if (nextState.Age > 30) {
+            return false;
+        }else{
+            return true;
+        }        
+    }
+    
+    componentWillUpdate(nextProps, nextState){
+        console.log("UpdateLC - We are in - componentWillUpdate");
+        console.log("nextProps",nextProps);
+        console.log("nextState",nextState);
+    }
+
+    componentDidUpdate(prevProps, prevState){        
+        console.log("UpdateLC - We are in - componentDidUpdate");
+        console.log("prevProps",prevProps);
+        console.log("prevState",prevState);
+        
+    }
+
+    componentDidMount(){
+        console.log("Creation - We are in - componentDidMount");
+        //setInterval(){}
+        //setTimeout(){}        
+    }
+
+    componentWillUnmount(){
+        console.log("Destruction - We are in - componentWillUnmount");
+        //clearInterval(){}
+        //clearTimeout(){}
+    }
+
 
     render(){  
         //console.log(this.state.Age == 22 ? "Rendering" : "Re-Rendering");     
