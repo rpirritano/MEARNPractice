@@ -2,7 +2,11 @@ console.log("Test my application with --hot");
 import React, {Component, PureComponent} from "react";
 import Header, {Footer as Ftr, Body} from "./HeaderComponent";
 import User from "./UserComponent";
+import NewComponent from "./NewComponent";
+
 import {render} from "react-dom";
+import {Provider} from "react-redux";
+import store from "./store";
 
 class App extends Component{ //class component, has state
     constructor(){
@@ -26,9 +30,14 @@ class App extends Component{ //class component, has state
                 <User greetFunc={this.greetMe}
                         ageFunc={this.showAge}/>
                 <Ftr display={true} msg={"Message from Index Page through passing props to Footer"}/>
+                <hr/>
+                <NewComponent/>
             </div>
         )
     }
 }
 
-render(<App/>, document.getElementById("app"))
+render(<Provider store={store}>
+    <App/>
+</Provider>, 
+document.getElementById("app"))
